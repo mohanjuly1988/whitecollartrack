@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WLT-Java</title>
+    <link rel="stylesheet" href="javac.css">
+</head>
+<body>
+
+        <div class="Java_Heading_Container">
+        <h2>WLT-Java Problems and Solutions</h2>
+    </div>
+    <div class="Java_Questions">
+    <ul class="problem-list">
+        <li class="problem-item">
+  <button class="problem-title">
+    1. Delete duplicate characters in a string
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Traverse the string character by character and add each character to the
+      result only if it is not already present. This keeps the first occurrence
+      and removes duplicates.
+    </p>
+
+    <pre>
+String str = "I am in Hyderabad";
+str = str.toLowerCase();
+String expected = "";
+
+for (int i = 0; i &lt; str.length(); i++)
+{
+    char ch = str.charAt(i);
+    if (!expected.contains(ch + ""))
+    {
+        expected = expected + ch;
+    }
+}
+System.out.print(expected);
+    </pre>
+  </div>
+</li>
+
+<li class="problem-item">
+  <button class="problem-title">
+    2. Display duplicate characters in a string
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Compare each character with the remaining characters in the string.
+      If a match is found, treat it as a duplicate and store it only once.
+    </p>
+
+    <pre>
+String str = "I am in Hyderabad";
+str = str.toLowerCase();
+String expected = "";
+
+for (int i = 0; i &lt; str.length(); i++)
+{
+    char ch = str.charAt(i);
+    for (int j = i + 1; j &lt; str.length(); j++)
+    {
+        char ch1 = str.charAt(j);
+        if (ch == ch1)
+        {
+            if (!expected.contains(ch + ""))
+            {
+                expected = expected.concat(ch + "");
+            }
+        }
+    }
+}
+System.out.print(expected);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    3. Display each character occurrence in a string
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      First extract unique characters, then count how many times each one
+      appears in the original string.
+    </p>
+
+    <pre>
+String str = "I am in Hyderabad";
+str = str.toLowerCase();
+String expected = "";
+
+for (int i = 0; i &lt; str.length(); i++)
+{
+    char ch = str.charAt(i);
+    if (!expected.contains(ch + ""))
+    {
+        expected = expected + ch;
+    }
+}
+
+for (int i = 0; i &lt; expected.length(); i++)
+{
+    char x = expected.charAt(i);
+    int c = 0;
+
+    for (int j = 0; j &lt; str.length(); j++)
+    {
+        if (x == str.charAt(j))
+        {
+            c++;
+        }
+    }
+    System.out.println(x + " came " + c + " times");
+}
+    </pre>
+  </div>
+</li>
+
+<li class="problem-item">
+  <button class="problem-title">
+    4. Display duplicate character occurrence
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Count occurrences of each unique character and print only those
+      whose count is greater than one.
+    </p>
+
+    <pre>
+String str = "I am in Hyderabad";
+str = str.toLowerCase();
+String expected = "";
+
+for (int i = 0; i &lt; str.length(); i++)
+{
+    char ch = str.charAt(i);
+    if (!expected.contains(ch + ""))
+    {
+        expected = expected + ch;
+    }
+}
+
+for (int i = 0; i &lt; expected.length(); i++)
+{
+    char x = expected.charAt(i);
+    int c = 0;
+
+    for (int j = 0; j &lt; str.length(); j++)
+    {
+        if (x == str.charAt(j))
+        {
+            c++;
+        }
+    }
+    if (c &gt; 1)
+    {
+        System.out.println(x + " came " + c + " times");
+    }
+}
+    </pre>
+  </div>
+</li>
+
+<li class="problem-item">
+  <button class="problem-title">
+    5. Find maximum occurring character
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Store character frequencies in a HashMap, find the maximum value,
+      and print all characters having that maximum count.
+    </p>
+
+    <pre>
+String str = "javav1234 java324 is good434";
+char[] ch = str.toCharArray();
+
+HashMap&lt;Character, Integer&gt; hm = new HashMap&lt;&gt;();
+
+for (int i = 0; i &lt; ch.length; i++)
+{
+    if (hm.containsKey(ch[i]))
+    {
+        hm.put(ch[i], hm.get(ch[i]) + 1);
+    }
+    else
+    {
+        hm.put(ch[i], 1);
+    }
+}
+
+int max = 0;
+for (char c : hm.keySet())
+{
+    if (hm.get(c) &gt; max)
+    {
+        max = hm.get(c);
+    }
+}
+
+List&lt;Character&gt; maxv = new ArrayList&lt;&gt;();
+for (char c : hm.keySet())
+{
+    if (hm.get(c) == max)
+    {
+        maxv.add(c);
+    }
+}
+
+System.out.println("Max Characters " + maxv + " value is " + max);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    6. Find special / upper / lower / digit occurrence
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Traverse each character and use Character utility methods to classify
+      and count occurrences.
+    </p>
+
+    <pre>
+String str = "2543%#$@$fsdfdsafadsfdasf khlkj ##!#!@ DFAS DSAF";
+char[] ch = str.toCharArray();
+
+HashMap&lt;Character, Integer&gt; hm = new HashMap&lt;&gt;();
+
+for (int i = 0; i &lt; ch.length; i++)
+{
+    if (!Character.isLetterOrDigit(ch[i]))
+    {
+        if (!hm.containsKey(ch[i]))
+        {
+            hm.put(ch[i], 1);
+        }
+        else
+        {
+            hm.put(ch[i], hm.get(ch[i]) + 1);
+        }
+    }
+}
+System.out.println(hm);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    7. Number occurrence without using String methods
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Extract digits using modulo and division and store their frequency
+      using a HashMap.
+    </p>
+
+    <pre>
+int num = 3214312;
+int temp = num;
+
+HashMap&lt;Integer, Integer&gt; hm = new HashMap&lt;&gt;();
+
+while (temp != 0)
+{
+    int d = temp % 10;
+    if (hm.containsKey(d))
+    {
+        hm.put(d, hm.get(d) + 1);
+    }
+    else
+    {
+        hm.put(d, 1);
+    }
+    temp = temp / 10;
+}
+System.out.print(hm);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    8. Reverse string preserving spaces
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Reverse the string, remove spaces, then rebuild the output by inserting
+      spaces at original positions.
+    </p>
+
+    <pre>
+String original = "hi cat book";
+String reverse = "";
+
+for (int i = original.length() - 1; i &gt;= 0; i--)
+{
+    reverse = reverse + original.charAt(i);
+}
+
+reverse = reverse.replaceAll(" ", "");
+
+String output = "";
+int j = 0;
+
+for (int i = 0; i &lt; original.length(); i++)
+{
+    if (original.charAt(i) == ' ')
+    {
+        output = output + ' ';
+    }
+    else
+    {
+        output = output + reverse.charAt(j++);
+    }
+}
+System.out.print(output);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    9. Consonant occurrence in a string
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Traverse each character and consider only alphabetic characters that are
+      not vowels. Store each consonant in a HashMap and update its count.
+    </p>
+
+    <pre>
+String str = "javav1234 java324 is good434 $@!$#$#@!";
+char ch[] = str.toCharArray();
+HashMap&lt;Character, Integer&gt; hm = new HashMap&lt;&gt;();
+
+for (int i = 0; i &lt; ch.length; i++)
+{
+    if (Character.isLetter(ch[i]) &&
+        !(ch[i]=='a'||ch[i]=='e'||ch[i]=='i'||ch[i]=='o'||ch[i]=='u'))
+    {
+        if (hm.containsKey(ch[i]))
+        {
+            hm.put(ch[i], hm.get(ch[i]) + 1);
+        }
+        else
+        {
+            hm.put(ch[i], 1);
+        }
+    }
+}
+System.out.print(hm);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    10. Display words without vowels
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Split the string into words and print only those words that do not contain
+      any vowels.
+    </p>
+
+    <pre>
+String str = "SKY fly my JAVA color";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    if (!word.contains("a") && !word.contains("e") &&
+        !word.contains("i") && !word.contains("o") &&
+        !word.contains("u") && !word.contains("A") &&
+        !word.contains("E") && !word.contains("I") &&
+        !word.contains("O") && !word.contains("U"))
+    {
+        System.out.print(word + " ");
+    }
+}
+    </pre>
+
+    <pre>
+// Alternative using regex
+String str = "SKY fly my JAVA color";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    if (!word.toLowerCase().matches(".*[aeiou].*"))
+    {
+        System.out.print(word + " ");
+    }
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    10. Display words without vowels
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Split the string into words and print only those words that do not contain
+      any vowels.
+    </p>
+
+    <pre>
+String str = "SKY fly my JAVA color";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    if (!word.contains("a") && !word.contains("e") &&
+        !word.contains("i") && !word.contains("o") &&
+        !word.contains("u") && !word.contains("A") &&
+        !word.contains("E") && !word.contains("I") &&
+        !word.contains("O") && !word.contains("U"))
+    {
+        System.out.print(word + " ");
+    }
+}
+    </pre>
+
+    <pre>
+// Alternative using regex
+String str = "SKY fly my JAVA color";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    if (!word.toLowerCase().matches(".*[aeiou].*"))
+    {
+        System.out.print(word + " ");
+    }
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    12. Display text occurrence based on number
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Extract digits and text separately from each word, convert the digits to
+      a number, and print the text that many times.
+    </p>
+
+    <pre>
+String str = "12cars 17bicycles 21lorries 9a";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    String numbers = "";
+    String text = "";
+
+    for (int i = 0; i &lt; word.length(); i++)
+    {
+        char ch = word.charAt(i);
+        if (Character.isDigit(ch))
+        {
+            numbers = numbers + ch;
+        }
+        else
+        {
+            text = text + ch;
+        }
+    }
+
+    int number = Integer.parseInt(numbers);
+    for (int i = 0; i &lt; number; i++)
+    {
+        System.out.print(text + " ");
+    }
+    System.out.println();
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    13. Move all zeros to front without sorting
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      First copy all zeros into a new array, then copy non-zero elements while
+      preserving order.
+    </p>
+
+    <pre>
+int input[] = {3,4,0,5,6,0,9};
+int output[] = new int[input.length];
+int j = 0;
+
+for (int i = 0; i &lt; input.length; i++)
+{
+    if (input[i] == 0)
+    {
+        output[j++] = 0;
+    }
+}
+
+for (int i = 0; i &lt; input.length; i++)
+{
+    if (input[i] != 0)
+    {
+        output[j++] = input[i];
+    }
+}
+
+for (int k = 0; k &lt; output.length; k++)
+{
+    System.out.print(output[k]);
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    14. Move all zeros to end without sorting
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Copy non-zero elements first, followed by zeros, while maintaining order.
+    </p>
+
+    <pre>
+int input[] = {3,4,0,5,6,0,9};
+int output[] = new int[input.length];
+int j = 0;
+
+for (int i = 0; i &lt; input.length; i++)
+{
+    if (input[i] != 0)
+    {
+        output[j++] = input[i];
+    }
+}
+
+for (int i = 0; i &lt; input.length; i++)
+{
+    if (input[i] == 0)
+    {
+        output[j++] = 0;
+    }
+}
+
+for (int k = 0; k &lt; output.length; k++)
+{
+    System.out.print(output[k]);
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    15. Display text occurrence (skip words without numbers)
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Ignore words without digits and display text only for words containing
+      numbers.
+    </p>
+
+    <pre>
+String str = "cars 17bicycles lorries 9a";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    String numbers = "";
+    String text = "";
+
+    for (int i = 0; i &lt; word.length(); i++)
+    {
+        char ch = word.charAt(i);
+        if (Character.isDigit(ch))
+        {
+            numbers = numbers + ch;
+        }
+        else
+        {
+            text = text + ch;
+        }
+    }
+
+    if (numbers.isEmpty())
+    {
+        continue;
+    }
+
+    int number = Integer.parseInt(numbers);
+    for (int i = 0; i &lt; number; i++)
+    {
+        System.out.print(text + " ");
+    }
+    System.out.println();
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    16. Display text occurrence with default zero
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      If a word does not contain a number, default it to zero to avoid errors.
+    </p>
+
+    <pre>
+String str = "cars 17bicycles lorries 9a";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    String numbers = "";
+    String text = "";
+
+    for (int i = 0; i &lt; word.length(); i++)
+    {
+        char ch = word.charAt(i);
+        if (Character.isDigit(ch))
+        {
+            numbers = numbers + ch;
+        }
+        else
+        {
+            text = text + ch;
+        }
+    }
+
+    if (numbers.isEmpty())
+    {
+        numbers = numbers + 0;
+    }
+
+    int number = Integer.parseInt(numbers);
+    for (int i = 0; i &lt; number; i++)
+    {
+        System.out.print(text + " ");
+    }
+
+    System.out.println();
+    System.out.println(numbers + " " + text + " displayed");
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    17. Display word based on its length
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Print each word as many times as its length.
+    </p>
+
+    <pre>
+String str = "hi cat book";
+String words[] = str.split(" ");
+
+for (String word : words)
+{
+    int length = word.length();
+    for (int i = 0; i &lt; length; i++)
+    {
+        System.out.print(word + " ");
+    }
+    System.out.println();
+    System.out.println(word + " is displayed " + length + " times.");
+}
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    18. Reverse string preserving spaces
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Reverse the string, remove spaces, and rebuild the output while keeping
+      spaces at original positions.
+    </p>
+
+    <pre>
+String original = "hi cat book";
+String reverse = "";
+
+for (int i = original.length() - 1; i &gt;= 0; i--)
+{
+    reverse = reverse + original.charAt(i);
+}
+
+reverse = reverse.replaceAll(" ", "");
+
+String output = "";
+int j = 0;
+
+for (int i = 0; i &lt; original.length(); i++)
+{
+    if (original.charAt(i) == ' ')
+    {
+        output = output + ' ';
+    }
+    else
+    {
+        output = output + reverse.charAt(j++);
+    }
+}
+System.out.print(output);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    19. Reverse string preserving vowels and spaces
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Preserve vowels and spaces at original positions while reversing the
+      remaining characters.
+    </p>
+
+    <pre>
+String original = "hi cat book";
+String reverse = "";
+
+for (int i = original.length() - 1; i &gt;= 0; i--)
+{
+    reverse = reverse + original.charAt(i);
+}
+
+for (int i = 0; i &lt; reverse.length(); i++)
+{
+    if (reverse.charAt(i)=='a'||reverse.charAt(i)=='e'||
+        reverse.charAt(i)=='i'||reverse.charAt(i)=='o'||
+        reverse.charAt(i)=='u'||reverse.charAt(i)=='A'||
+        reverse.charAt(i)=='E'||reverse.charAt(i)=='I'||
+        reverse.charAt(i)=='O'||reverse.charAt(i)=='U'||
+        reverse.charAt(i)==' ')
+    {
+        reverse = reverse.replace(reverse.charAt(i) + "", "");
+    }
+}
+
+String output = "";
+int j = 0;
+
+for (int i = 0; i &lt; original.length(); i++)
+{
+    if (original.charAt(i)=='a'||original.charAt(i)=='e'||
+        original.charAt(i)=='i'||original.charAt(i)=='o'||
+        original.charAt(i)=='u'||original.charAt(i)=='A'||
+        original.charAt(i)=='E'||original.charAt(i)=='I'||
+        original.charAt(i)=='O'||original.charAt(i)=='U'||
+        original.charAt(i)==' ')
+    {
+        output = output + original.charAt(i);
+    }
+    else
+    {
+        output = output + reverse.charAt(j++);
+    }
+}
+
+System.out.println(output);
+    </pre>
+  </div>
+</li>
+<li class="problem-item">
+  <button class="problem-title">
+    20. Reverse string preserving uppercase letters and spaces
+  </button>
+
+  <div class="solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      Preserve uppercase letters and spaces at their original positions while
+      reversing the remaining characters.
+    </p>
+
+    <pre>
+String original = "JAVA is GOOD programming LANguage";
+String reverse = "";
+
+for (int i = original.length() - 1; i &gt;= 0; i--)
+{
+    reverse = reverse + original.charAt(i);
+}
+
+for (int i = 0; i &lt; reverse.length(); i++)
+{
+    if ((reverse.charAt(i) &gt;= 'A' &amp;&amp; reverse.charAt(i) &lt;= 'Z')
+        || reverse.charAt(i) == ' ')
+    {
+        reverse = reverse.replace(reverse.charAt(i) + "", "");
+    }
+}
+
+String output = "";
+int j = 0;
+
+for (int i = 0; i &lt; original.length(); i++)
+{
+    if ((original.charAt(i) &gt;= 'A' &amp;&amp; original.charAt(i) &lt;= 'Z')
+        || original.charAt(i) == ' ')
+    {
+        output = output + original.charAt(i);
+    }
+    else
+    {
+        output = output + reverse.charAt(j++);
+    }
+}
+
+System.out.println(output);
+    </pre>
+  </div>
+</li>
+
+</ul>
+    </div>
+    <script>
+  const titles = document.querySelectorAll(".problem-title");
+
+  titles.forEach(title => {
+    title.addEventListener("click", () => {
+      const solution = title.nextElementSibling;
+      solution.style.display =
+        solution.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>
+</body>
+</html>

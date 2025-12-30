@@ -1,0 +1,72 @@
+
+body
+{
+    background-color: rgb(6, 3, 65);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+    height: auto;
+  overflow-y: auto;
+}
+
+.Java_Heading_Container
+{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(164, 65, 65);
+    
+}
+
+h2
+{
+    color: white;
+    
+}
+
+
+
+
+
+.problem-title {
+  
+  border: 2px solid rgb(182, 193, 181);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: left;
+  background-color: rgb(8, 92, 24);
+  display: flex;
+}
+
+
+.solution {
+  display: none;  
+  padding-left: 20px;
+  color: #ddd;
+  height: 200px;
+  overflow-y: auto;
+  border: 2px solid rgb(18, 207, 50);
+  background-color: rgb(16, 16, 66);
+}
+
+
+ul
+{
+    display: flex;
+    flex-direction:column;
+    list-style-type: none;
+       
+}
+ul li
+{
+    padding: 5px;
+    
+}
+
+
+ul a
+{
+    color: rgb(239, 239, 238);
+    text-decoration: none;
+    cursor:all-scroll;
+    
+}
+
