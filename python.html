@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCT-Python</title>
+    <link rel="stylesheet" href="python.css">
+</head>
+<body>
+    <div class="Python_Heading_Container">
+        <h2>WCT-Python Problems and Solutions</h2>
+    </div>
+    <div class="Python_Questions">
+        <ul class="python_problem-list">
+            <li class="python_problem-item">
+                <button class="python_problem-title">
+                    1.Enter a DICT key value pair by only using keyboard input
+                </button>
+                <div class="python_solution">
+    <p><strong>Explanation:</strong></p>
+    <p>
+      How this Program Works:
+      This program acts like a digital ledger. It repeatedly asks for a name and a score, stores them together, and stops only when you tell it to.
+
+      How the Code Works:
+d = dict(): Sets up an empty "dictionary" to store your data.
+while True:: Starts a loop that repeats indefinitely so you can enter multiple students.
+d[key] = value: Links the name (key) to the marks (value) inside the dictionary.
+.capitalize(): Standardizes the user's answer (e.g., "no" becomes "No") so the program correctly recognizes when to stop.
+break: Exits the loop and stops asking for input.
+print(d): Displays the final list of all names and marks collected.
+
+Key Concepts for Beginners:
+Dictionaries: Store data in pairs, like a real dictionary links a word to its definition.
+Inputs: By default, input() treats everything as text. We use int() to convert marks into a number.
+Loops: The while loop is the "engine" that keeps the program running until the break condition is met.
+    </p>
+    <pre>
+        d = dict()
+
+while True:
+    key = input("Enter the Name: ")
+    value = int(input("Enter the marks: "))
+    d[key] = value
+    
+    option = input("Do you want to add one more student? Yes || No\n")
+    if option.capitalize() == 'No':
+        break
+
+print(d)
+    </pre>
+
+            </li>
+
+        </ul>
+
+    </div>
+        <script>
+  const titles = document.querySelectorAll(".python_problem-title");
+
+  titles.forEach(title => {
+    title.addEventListener("click", () => {
+      const solution = title.nextElementSibling;
+      solution.style.display =
+        solution.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>
+</body>
+</html>
